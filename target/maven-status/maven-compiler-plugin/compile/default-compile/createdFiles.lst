@@ -1,0 +1,6 @@
+com\ssmdemo\mapper\PersonMapper.class
+com\ssmdemo\vo\PersonVo.class
+com\ssmdemo\service\PersonServiceImpl.class
+com\ssmdemo\web\DemoController.class
+com\ssmdemo\web\PersonController.class
+com\ssmdemo\service\PersonService.class

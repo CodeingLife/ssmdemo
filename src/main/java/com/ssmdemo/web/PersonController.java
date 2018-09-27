@@ -13,7 +13,7 @@ import com.ssmdemo.vo.PersonVo;
 
 
 @Controller
-@RequestMapping("person")
+@RequestMapping("/person")
 public class PersonController {
 	 
     @Autowired
@@ -23,16 +23,16 @@ public class PersonController {
      * 这里return的字符串"mvc"加上前面Spring MVC配置文件中视图解析配置的前缀"/WEB-INF/views/"和后缀".jsp",
      * 构成了要请求转发要跳转到的页面路径，从根路径webapp下开始，即为/WEB-INF/views/mvc.jsp
      * */
-    @RequestMapping(value="mvc")
+    @RequestMapping(value="/mvc")
     public String testMvc() {
-        return "mvc";//
+        return "index";//
     }
     
     /**
      * 这里@ResponseBody代表方法是直接返回一个json数据回前端，
      * 注意Spring mvc配置文件中不要漏掉<mvc:annotation-driven/>
      * */
-    @RequestMapping(value="list")
+    @RequestMapping(value="/list")
     @ResponseBody
     public List<PersonVo> findAll() {
         List<PersonVo> list = personService.selectAll();
@@ -42,7 +42,7 @@ public class PersonController {
     /**
      * 其中@PathVariable用来获得请求url中的动态参数
      * */
-    @RequestMapping(value="one/{id}")
+    @RequestMapping(value="/one/{id}")
     @ResponseBody
     public PersonVo findOne(@PathVariable("id") String id) {
         return personService.selectById(id);

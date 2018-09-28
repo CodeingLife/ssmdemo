@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.ssmdemo.mapper.PersonMapper;
+import com.ssmdemo.resolver.exception.CustomException;
 import com.ssmdemo.vo.PersonVo;
 
 @Service
@@ -36,8 +37,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<PersonVo> selectAll() {
-        return personMapper.selectAll();
+    public List<PersonVo> selectAll(){
+			String a = null;
+			if(a.equals(null)) {
+				System.out.println("11111");
     }
-    
+			return personMapper.selectAll();
+    }
 }

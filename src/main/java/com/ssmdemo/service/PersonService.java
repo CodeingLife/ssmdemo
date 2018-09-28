@@ -2,22 +2,23 @@ package com.ssmdemo.service;
 
 import java.util.List;
 
+import com.ssmdemo.resolver.exception.CustomException;
 import com.ssmdemo.vo.PersonVo;
 
 public interface PersonService {
 	 
-    //ĞÂÔöÒ»¸öPerson¶ÔÏó
+    //æ–°å¢ä¸€ä¸ªPersonå¯¹è±¡
     void insert(PersonVo p);
     
-    //¸ù¾İÖ÷¼üidÉ¾³ıPerson¶ÔÏó
+    //æ ¹æ®ä¸»é”®idåˆ é™¤Personå¯¹è±¡
     void deleteById(String id);
     
-    //ĞŞ¸ÄÒ»¸öperson¶ÔÏó
+    //ä¿®æ”¹ä¸€ä¸ªpersonå¯¹è±¡
     void update(PersonVo p);
     
-    //¸ù¾İÖ÷¼üid²éÕÒPerson¶ÔÏó
+    //æ ¹æ®ä¸»é”®idæŸ¥æ‰¾Personå¯¹è±¡
     PersonVo selectById(String id);
     
-    //²éÕÒËùÓĞPerson¶ÔÏó£¬·µ»Ø¼¯ºÏÀàĞÍ
+    //æŸ¥æ‰¾æ‰€æœ‰Personå¯¹è±¡ï¼Œè¿”å›é›†åˆç±»å‹
     List<PersonVo> selectAll();
 }

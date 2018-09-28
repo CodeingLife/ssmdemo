@@ -23,7 +23,15 @@
     <mvc:annotation-driven />
     <!-- 搜索spring控件 -->
     <context:component-scan base-package="com.ssmdemo.web"></context:component-scan>
-    <!-- 视图页面配置 -->
+  
+  
+    <!-- 静态资源由WEB服务器默认的Servlet来处理   -->
+    <!-- 可以设定自定义异常404等页面  -->
+    <mvc:default-servlet-handler/>
+	
+	
+	
+	<!-- 视图页面配置 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/WEB-INF/views/</value>
@@ -32,5 +40,8 @@
             <value>.jsp</value>
         </property>
     </bean>
-
+	<!-- 全局异常处理器 
+	只要你实现了HandlerExceptionResolver接口，这个
+	类就是一个全局异常处理器-->
+		<bean class="com.ssmdemo.resolver.exception.CunstomExceptionResolver"></bean>
 </beans>

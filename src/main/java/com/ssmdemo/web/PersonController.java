@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ssmdemo.resolver.exception.CustomException;
 import com.ssmdemo.service.PersonService;
 import com.ssmdemo.vo.PersonVo;
 
@@ -20,27 +21,28 @@ public class PersonController {
     PersonService personService;
     
     /**
-     * ÕâÀïreturnµÄ×Ö·û´®"mvc"¼ÓÉÏÇ°ÃæSpring MVCÅäÖÃÎÄ¼şÖĞÊÓÍ¼½âÎöÅäÖÃµÄÇ°×º"/WEB-INF/views/"ºÍºó×º".jsp",
-     * ¹¹³ÉÁËÒªÇëÇó×ª·¢ÒªÌø×ªµ½µÄÒ³ÃæÂ·¾¶£¬´Ó¸ùÂ·¾¶webappÏÂ¿ªÊ¼£¬¼´Îª/WEB-INF/views/mvc.jsp
+     * è¿™é‡Œreturnçš„å­—ç¬¦ä¸²"mvc"åŠ ä¸Šå‰é¢Spring MVCé…ç½®æ–‡ä»¶ä¸­è§†å›¾è§£æé…ç½®çš„å‰ç¼€"/WEB-INF/views/"å’Œåç¼€".jsp",
+     * æ„æˆäº†è¦è¯·æ±‚è½¬å‘è¦è·³è½¬åˆ°çš„é¡µé¢è·¯å¾„ï¼Œä»æ ¹è·¯å¾„webappä¸‹å¼€å§‹ï¼Œå³ä¸º/WEB-INF/views/mvc.jsp
      * */
     @RequestMapping(value="/mvc")
-    public String testMvc() {
+    public String testMvc(String a) {
         return "index";//
     }
     
     /**
-     * ÕâÀï@ResponseBody´ú±í·½·¨ÊÇÖ±½Ó·µ»ØÒ»¸öjsonÊı¾İ»ØÇ°¶Ë£¬
-     * ×¢ÒâSpring mvcÅäÖÃÎÄ¼şÖĞ²»ÒªÂ©µô<mvc:annotation-driven/>
+     * è¿™é‡Œ@ResponseBodyä»£è¡¨æ–¹æ³•æ˜¯ç›´æ¥è¿”å›ä¸€ä¸ªjsonæ•°æ®å›å‰ç«¯ï¼Œ
+     * æ³¨æ„Spring mvcé…ç½®æ–‡ä»¶ä¸­ä¸è¦æ¼æ‰<mvc:annotation-driven/>
+     * @throws CustomException 
      * */
     @RequestMapping(value="/list")
     @ResponseBody
-    public List<PersonVo> findAll() {
+    public List<PersonVo> findAll() throws CustomException {
         List<PersonVo> list = personService.selectAll();
-        return list;//ÕâÀïÍ¨¹ıÇ°¶Ë·µ»ØµÄjsonÊı¾İ²é¿´µ½ÍêÕûÊı¾İ
+        return list;//è¿™é‡Œé€šè¿‡å‰ç«¯è¿”å›çš„jsonæ•°æ®æŸ¥çœ‹åˆ°å®Œæ•´æ•°æ®
     } 
     
     /**
-     * ÆäÖĞ@PathVariableÓÃÀ´»ñµÃÇëÇóurlÖĞµÄ¶¯Ì¬²ÎÊı
+     * å…¶ä¸­@PathVariableç”¨æ¥è·å¾—è¯·æ±‚urlä¸­çš„åŠ¨æ€å‚æ•°
      * */
     @RequestMapping(value="/one/{id}")
     @ResponseBody

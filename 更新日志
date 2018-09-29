@@ -2,6 +2,33 @@
 #######################
 本次更新加入aop技术引入aspectj 
 #######################
+配置方法
+1、maven引入
+<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	 	<version>1.9.1</version>
+	</dependency>
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+		<version>1.9.1</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjtools</artifactId>
+	    <version>1.9.1</version>
+	</dependency>
+2、spring-mvc配置
+ 	<!--启动@AspectJ支持 默认是false-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean id="controllerAdivce" class="com.ssmdemo.aop.ControllerAdivce"></bean>
+
+
+
  使用时出现问题和解决办法
  * 1、before、after、around的顺序是 around的Object value = proceedingJoinPoint.proceed()，前的方法会在before之前执行
  * 	 after方法会在value赋值之后执行，然后再执行value赋值之后的around方法

@@ -17,19 +17,22 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 	http://www.springframework.org/schema/mvc 
-	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	">
     
      <!-- 开启注解 -->
     <mvc:annotation-driven />
     <!-- 搜索spring控件 -->
     <context:component-scan base-package="com.ssmdemo.web"></context:component-scan>
   
-  
+     <!--启动@AspectJ支持 默认是false-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean id="controllerAdivce" class="com.ssmdemo.aop.ControllerAdivce"></bean>
     <!-- 静态资源由WEB服务器默认的Servlet来处理   -->
     <!-- 可以设定自定义异常404等页面  -->
     <mvc:default-servlet-handler/>
-	
-	
 	
 	<!-- 视图页面配置 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -40,8 +43,10 @@
             <value>.jsp</value>
         </property>
     </bean>
-	<!-- 全局异常处理器 
-	只要你实现了HandlerExceptionResolver接口，这个
-	类就是一个全局异常处理器-->
-		<bean class="com.ssmdemo.resolver.exception.CunstomExceptionResolver"></bean>
+	<!-- 全局异常处理器 只要你实现了HandlerExceptionResolver接口，这个类就是一个全局异常处理器-->
+	<bean class="com.ssmdemo.resolver.exception.CunstomExceptionResolver"></bean>
+	
+	
+ 
+
 </beans>

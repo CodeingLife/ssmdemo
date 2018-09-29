@@ -1,0 +1,11 @@
+2018/09/29 17:23
+#######################
+本次更新加入aop技术引入aspectj 
+#######################
+ 使用时出现问题和解决办法
+ * 1、before、after、around的顺序是 around的Object value = proceedingJoinPoint.proceed()，前的方法会在before之前执行
+ * 	 after方法会在value赋值之后执行，然后再执行value赋值之后的around方法
+ * 2、around方法必须要有joinPoint加载
+ * 3、around方法写的存在问题，出现了不加载before方法的现象，解决办法是在around方法加上joinpoint参数并调用value赋值
+ * 
+ * 
